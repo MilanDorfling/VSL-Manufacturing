@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PinContainer } from "./ui/3d-pin";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 
 export function AnimatedPin() {
@@ -118,6 +119,16 @@ export function AnimatedPin() {
     return (
       <div className="w-full flex flex-col items-center mt-12 px-4 select-none">
         <div className="w-full flex justify-center items-center relative min-h-[370px]" style={{ minHeight: 370 }}>
+          {/* Left button (for previous) */}
+          <button
+            aria-label="Previous"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-zinc-400/50 text-white rounded-full shadow hover:bg-cyan-700 transition w-12 h-12 flex items-center justify-center"
+            style={{ zIndex: 2 }}
+            onClick={() => { setDirection(-1); setCurrent(current - 1); }}
+            disabled={current === 0}
+          >
+            <ArrowLeft size={28} />
+          </button>
           <div className="relative w-full max-w-xs min-h-80 flex items-center justify-center">
             <motion.div
               key={current}
@@ -160,17 +171,19 @@ export function AnimatedPin() {
               </PinContainer>
             </motion.div>
           </div>
-        </div>
-        {/* Carousel controls */}
-        <div className="flex justify-center gap-4 mt-4">
+          {/* Right button (for next) */}
           <button
-            className="rounded-full bg-zinc-800 text-white w-8 h-8 flex items-center justify-center disabled:opacity-40"
-            onClick={() => { setDirection(-1); setCurrent(current - 1); }}
-            disabled={current === 0}
-            aria-label="Previous pin"
+            aria-label="Next"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-zinc-400/50 text-white rounded-full shadow hover:bg-cyan-700 transition w-12 h-12 flex items-center justify-center"
+            style={{ zIndex: 2 }}
+            onClick={() => { setDirection(1); setCurrent(current + 1); }}
+            disabled={current === pins.length - 1}
           >
-            &#8592;
+            <ArrowRight size={28} />
           </button>
+        </div>
+        {/* Carousel dots */}
+        <div className="flex justify-center gap-4 mt-4 mb-5">
           <div className="flex gap-1">
             {pins.map((_, idx) => (
               <span
@@ -179,14 +192,6 @@ export function AnimatedPin() {
               />
             ))}
           </div>
-          <button
-            className="rounded-full bg-zinc-800 text-white w-8 h-8 flex items-center justify-center disabled:opacity-40"
-            onClick={() => { setDirection(1); setCurrent(current + 1); }}
-            disabled={current === pins.length - 1}
-            aria-label="Next pin"
-          >
-            &#8594;
-          </button>
         </div>
       </div>
     );

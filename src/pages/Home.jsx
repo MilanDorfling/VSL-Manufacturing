@@ -5,7 +5,6 @@ import HeroBanner, { heroImages } from '../components/heroBanner';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
-import VideoContainer from '../components/VideoContainer';
 import factoryTourVideo from '../assets/videos/VSLVID - Trim.mp4';
 
 import { LayoutTextFlip } from '../components/LayoutTextFlip';
@@ -36,17 +35,27 @@ const Home = () => {
       </div>
       <HomeIntro />
 
-      <section className="mt-0 md:mt-5 flex flex-col items-center mb-25 gap-2 md:gap-4">
-        <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-6 text-neutral-600 dark:text-white px-10 md:px-20 -mt-6">
+      <section className="flex flex-col items-center mb-25 gap-2 md:gap-4 -mt-35 sm:-mt-30 md:mt-10 lg:mt-25">
+        <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-6 text-neutral-600 dark:text-white px-10 md:px-20 -mt-6 xl:px-60 xl:mb-15">
           Welcome to the future of manufacturing.
           Step inside our brand new factory—where innovation meets precision, and your ideas become reality.
           Experience next-level craftsmanship, cutting-edge technology, and a team dedicated to building what’s next.
           Welcome to a new era.
         </h3>
         
-        <div className="w-full mt-1 md:mt-0">
-          <VideoContainer src={factoryTourVideo} className="rounded-lg! max-w-full! md:rounded-2xl! md:max-w-5xl! px-4 py-2" />
-        </div>
+        <div className="w-full flex justify-center mb-8 px-8 mt-5 md:px-20">
+                  <video
+                    src={factoryTourVideo}
+                    controls
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="rounded-2xl shadow-lg w-full max-w-6xl object-cover bg-black"
+                    style={{ aspectRatio: '16/9' }}
+                  />
+                </div>
 
         <div className="flex justify-end mt-10 md:mt-50 md:ml-10 w-full">
           <LayoutTextFlip staticText="Our" words={["Values", "Goals", "Mission"]} className="text-5xl" />
@@ -57,7 +66,7 @@ const Home = () => {
         </div>
 
         <h1 className="text-4xl md:text-5xl font-nulshock font-bold bg-clip-text text-transparent bg-linear-to-b from-neutral-400 to-neutral-800 dark:bg-linear-to-b dark:from-neutral-50 dark:to-neutral-500 bg-opacity-50 leading-tight wrap-break-word pt-10 md:pt-30 ">Company Partners</h1>
-        <div className="w-full flex justify-center mt-10 mb-30">
+        <div className="w-full flex justify-center mt-20 mb-20">
           <LogoLoop />
         </div>
 

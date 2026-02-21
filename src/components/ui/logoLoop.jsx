@@ -13,9 +13,8 @@ const logos = [
 ]
 
 export default function LogoLoop() {
-  const [paused, setPaused] = useState(false);
   const containerRef = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const [ setContainerWidth ] = useState(0);
 
   // Estimate the width of a single logo card (adjust if needed)
 
@@ -28,7 +27,7 @@ export default function LogoLoop() {
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+  }, [setContainerWidth]);
 
   // Duplicate the logos array once for seamless looping
   const loopLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos];

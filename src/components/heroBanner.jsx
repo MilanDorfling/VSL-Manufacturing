@@ -11,7 +11,7 @@ const heroImages = [
 ];
 
 export { heroImages };
-import { Fingerprint, Activity, Lock } from "lucide-react";
+import { Activity, Lock } from "lucide-react";
 
 
 const HeroBanner = ({ name, title, imageSrc, children }) => {

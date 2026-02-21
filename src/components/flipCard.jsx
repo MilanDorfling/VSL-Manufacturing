@@ -15,7 +15,7 @@ function FlipCard({ frontIcon, frontLabel, backText, backImage, flipped, onClick
 	return (
 		<div
 			className={
-				`group perspective-[1000px] w-36 h-40 md:w-64 md:h-50 m-1 md:m-2 ${isMobile ? 'cursor-pointer' : ''}`
+				`group perspective-[1000px] w-36 h-40 sm:w-48 sm:h-48 md:w-48 md:h-48 m-1 md:m-2 ${isMobile ? 'cursor-pointer' : ''}`
 			}
 			onClick={isMobile ? onClick : undefined}
 		>
