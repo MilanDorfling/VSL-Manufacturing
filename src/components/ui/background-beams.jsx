@@ -3,9 +3,8 @@ import { motion } from "motion/react";
 import { cn } from "../../lib/utils";
 
 export const BackgroundBeams = React.memo(({ className, animated = true }) => {
-    // Array of SVG path strings. Each path defines a beam curve.
-  // Add/remove paths to change the number of beams.
-  const paths = [
+  // Memoize paths to avoid recalculation
+  const paths = React.useMemo(() => [
       "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
       "M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867",
       "M-366 -205C-366 -205 -298 200 166 327C630 454 698 859 698 859",
@@ -56,7 +55,11 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
       "M-51 -565C-51 -565 17 -160 481 -33C945 94 1013 499 1013 499",
       "M-44 -573C-44 -573 24 -168 488 -41C952 86 1020 491 1020 491",
       "M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483",
-    ];
+    ], []);
+
+    // Reduce number of animated beams on xl screens for performance
+    const isXL = typeof window !== 'undefined' && window.innerWidth >= 1280;
+    const animatedPaths = isXL ? paths.filter((_, i) => i % 2 === 0) : paths;
   return (
     <div
       className={cn(
@@ -94,7 +97,7 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
           </React.Fragment>
         ))}
         {/* Animated beams: moving colored segments for each path. */}
-        {animated && paths.map((path, index) => (
+        {animated && animatedPaths.map((path, index) => (
           <motion.path
             key={`path-` + index}
             d={path}
@@ -105,7 +108,7 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
         ))}
         <defs>
           {/* Animated linear gradients for each beam. Change stopColor values for different color effects. */}
-          {animated && paths.map((path, index) => (
+          {animated && animatedPaths.map((path, index) => (
             <motion.linearGradient
               id={`linearGradient-${index}`}
               key={`gradient-${index}`}

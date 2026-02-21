@@ -26,7 +26,7 @@ const HomeIntro = () => {
 	};
 
 	return (
-		<section className="h-200 w-full rounded-md flex md:items-center md:justify-center antialiased bg-grid-white/[0.02] relative overflow-hidden mx-auto">
+		<section className="h-200 w-full rounded-md flex md:items-center md:justify-center antialiased bg-grid-white/[0.02] relative overflow-hidden mx-auto mt-30 sm:mt-35 md:mt-0">
 			<AnimatePresence>
 				{/* Only show Spotlight on md+ screens */}
 				{!isMobile && showSpotlight && <Spotlight />}
