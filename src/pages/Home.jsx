@@ -14,8 +14,8 @@ import LogoLoop from '../components/ui/logoLoop';
 
 const heroData = [
   {
-    name: "Vuyo Skweeyiya",
-    title: "Drirector",
+    name: "Vuyo Skweyiya",
+    title: "Director",
     imageSrc: heroImages[0],
   },
   {
