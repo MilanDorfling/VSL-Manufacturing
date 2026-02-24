@@ -11,7 +11,7 @@ const heroImages = [
 ];
 
 export { heroImages };
-import { Activity, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 
 
 const HeroBanner = ({ name, title, imageSrc, children }) => {
@@ -20,19 +20,18 @@ const HeroBanner = ({ name, title, imageSrc, children }) => {
 			{/* Glassy/metallic backgrounds */}
 
 			<div className="absolute inset-0 z-0 bg-linear-to-br from-blue-900/60 via-zinc-800/80 to-blue-400/30 pointer-events-none" />
-			<div className="absolute inset-0 z-10 opacity-40 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%20200%20200%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cfilter%20id%3D%27noiseFilter%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23noiseFilter)%27%2F%3E%3C%2Fsvg%3E')] mix-blend-overlay" />
-			<div className="absolute inset-0 z-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.1)_40%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.1)_60%,rgba(255,255,255,0.3)_100%)] pointer-events-none mix-blend-overlay opacity-60" />
-			<div className="absolute inset-0 rounded-[20px] p-px bg-[linear-gradient(135deg,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.6)_100%)] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] mask-exclude z-20 pointer-events-none" />
+			<div className="absolute inset-0 z-10 opacity-60 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%20200%20200%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cfilter%20id%3D%27noiseFilter%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23noiseFilter)%27%2F%3E%3C%2Fsvg%3E')] mix-blend-overlay" />
+			<div className="absolute inset-0 z-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.1)_40%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.1)_60%,rgba(255,255,255,0.3)_100%)] pointer-events-none mix-blend-overlay opacity-90" />
+			<div className="absolute inset-0 z-20 rounded-[20px] p-px bg-[linear-gradient(135deg,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.6)_100%)] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] mask-exclude pointer-events-none" />
 
 			{/* Card Content */}
 			<div className="relative z-30 h-full flex flex-col justify-between p-8 text-white bg-[rgba(255,255,255,0.05)]">
 				{/* Top badge row */}
 				<div className="flex justify-between items-center border-b border-white/20 pb-4">
-					<div className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest px-2 py-1 bg-white/10 rounded border border-white/20">
-						<Lock size={14} className="opacity-80" />
-						<span>MANAGEMENT</span>
+					<div className="flex items-center gap-1.5 text-[15px] font-semibold tracking-widest px-2 py-1 bg-white/10 rounded border border-white/20">
+						<Lock size={14} className="opacity-90" />
+						<span>OWNER</span>
 					</div>
-					<Activity className="opacity-80" size={20} />
 				</div>
 
 				{/* Profile image and name/title */}
