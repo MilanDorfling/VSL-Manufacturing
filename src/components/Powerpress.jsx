@@ -7,7 +7,6 @@ import img3 from '../assets/pictures/SWD13722.JPG';
 import img4 from '../assets/pictures/SWD13618.JPG';
 import img5 from '../assets/pictures/Aerial 2.JPG'
 import img6 from '../assets/pictures/038.jpg'
-import img7 from '../assets/pictures/040.jpg'
 import img8 from '../assets/pictures/041.jpg'
 
 const BottomGradient = () => (
@@ -110,7 +109,7 @@ const imageSections = [
     img: img5, // Replace with Komani overview image
     alt: "Komani Plant Overview",
     title: "Press Line Overview",
-    plate: "Komani (Queenstown)",
+    plate: "Queenstown",
     info: (
       <div className="text-white">
         <h3 className="text-xl font-bold mb-2 text-center">Komani Plant Overview</h3>
@@ -118,56 +117,50 @@ const imageSections = [
       </div>
     )
   },
-  // Komani A Line: A1 & A8, A7
+  // Komani A Line: Combined (A1–A8, A7, A2–A6)
   {
-    img: img6, // Replace with Komani A Line image
+    img: img6, // Use one representative image for A Line
     alt: "Komani Plant A Line",
-    title: "A Line Presses (A1, A7, A8)",
-    plate: "Komani (Queenstown)",
-    info: (
-      <div className="text-white flex flex-col md:flex-row md:justify-center md:gap-12">
-        <div>
-          <h4 className="text-lg font-bold mb-2 text-center">A1 & A8 (DANLY)</h4>
-          <ul className="list-disc pl-8 text-left mx-auto mb-4">
-            <li><span className="font-bold">Mechanical</span></li>
-            <li><span className="font-bold">Strokes/hour:</span> 240</li>
-            <li><span className="font-bold">Capacity (Tons):</span> 800 (Inner), 600 (Outer)</li>
-            <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1676.4</li>
-            <li><span className="font-bold">Shut Heights (mm):</span> Inner 1372–1880, Outer 1270–1778</li>
-            <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 120 ton</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-lg font-bold mb-2 text-center">A7 (WILKENS & MITCHEL)</h4>
-          <ul className="list-disc pl-8 text-left mx-auto mb-4">
-            <li><span className="font-bold">Mechanical</span></li>
-            <li><span className="font-bold">Strokes/hour:</span> 240</li>
-            <li><span className="font-bold">Capacity (Tons):</span> 400 (Inner & Outer)</li>
-            <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1828.8</li>
-            <li><span className="font-bold">Shut Heights (mm):</span> Inner 450, Outer 1035</li>
-            <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 56 ton</li>
-          </ul>
-        </div>
-      </div>
-    )
-  },
-  // Komani A Line: A2–A6
-  {
-    img: img7, // Replace with Komani A Line image
-    alt: "Komani Plant A Line",
-    title: "A Line Presses (A2–A6)",
-    plate: "Komani (Queenstown)",
+    title: "A Line Presses",
+    plate: "Queenstown",
     info: (
       <div className="text-white">
-        <h3 className="text-xl font-bold mb-2 text-center">A Line Presses (A2–A6)</h3>
-        <ul className="list-disc pl-8 text-left w-fit mx-auto">
-          <li><span className="font-bold">Mechanical</span></li>
-          <li><span className="font-bold">Strokes/hour:</span> 240</li>
-          <li><span className="font-bold">Capacity (Tons):</span> 400 (Inner & Outer)</li>
-          <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1828.8</li>
-          <li><span className="font-bold">Shut Heights (mm):</span> Inner 711, Outer 1067</li>
-          <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 56 ton</li>
-        </ul>
+        <h3 className="text-xl font-bold mb-5 text-center">A Line Presses</h3>
+        <div className="flex flex-col md:flex-row md:justify-center md:gap-12 gap-8 lg:gap-24 w-full max-w-5xl mx-auto">
+          <div className="flex-1 min-w-[220px] md:min-w-[250px] lg:min-w-[280px] px-2 md:px-4">
+            <h4 className="text-lg font-bold mb-2 text-center">A1 & A8</h4>
+            <ul className="list-disc pl-8 text-left mx-auto mb-4">
+              <li><span className="font-bold">Mechanical</span></li>
+              <li><span className="font-bold">Strokes/hour:</span> 240</li>
+              <li><span className="font-bold">Capacity (Tons):</span> 800 (Inner), 600 (Outer)</li>
+              <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1676.4</li>
+              <li><span className="font-bold">Shut Heights (mm):</span> Inner 1372–1880, Outer 1270–1778</li>
+              <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 120 ton</li>
+            </ul>
+          </div>
+          <div className="flex-1 min-w-[220px] md:min-w-[250px] lg:min-w-[280px] px-2 md:px-4">
+            <h4 className="text-lg font-bold mb-2 text-center">A7</h4>
+            <ul className="list-disc pl-8 text-left mx-auto mb-4">
+              <li><span className="font-bold">Mechanical</span></li>
+              <li><span className="font-bold">Strokes/hour:</span> 240</li>
+              <li><span className="font-bold">Capacity (Tons):</span> 400 (Inner & Outer)</li>
+              <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1828.8</li>
+              <li><span className="font-bold">Shut Heights (mm):</span> Inner 450, Outer 1035</li>
+              <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 56 ton</li>
+            </ul>
+          </div>
+          <div className="flex-1 min-w-[220px] md:min-w-[250px] lg:min-w-[280px] px-2 md:px-4">
+            <h4 className="text-lg font-bold mb-2 text-center">A2–A6</h4>
+            <ul className="list-disc pl-8 text-left mx-auto mb-4">
+              <li><span className="font-bold">Mechanical</span></li>
+              <li><span className="font-bold">Strokes/hour:</span> 240</li>
+              <li><span className="font-bold">Capacity (Tons):</span> 400 (Inner & Outer)</li>
+              <li><span className="font-bold">Bed Area (mm):</span> 2743.2 × 1828.8</li>
+              <li><span className="font-bold">Shut Heights (mm):</span> Inner 711, Outer 1067</li>
+              <li><span className="font-bold">Cushions:</span> Ram 56 ton, Bolster 56 ton</li>
+            </ul>
+          </div>
+        </div>
       </div>
     )
   },
@@ -175,31 +168,34 @@ const imageSections = [
   {
     img: img8, // Replace with Komani B Line image
     alt: "Komani Plant B Line",
-    title: "B Line Presses (BA, B1, B2, B3)",
-    plate: "Komani (Queenstown)",
+    title: "B Line Presses",
+    plate: "Queenstown",
     info: (
-      <div className="text-white flex flex-col md:flex-row md:justify-center md:gap-12">
-        <div>
-          <h4 className="text-lg font-bold mb-4 text-center">BA (LIE CHIEH)</h4>
-          <ul className="list-disc pl-8 text-left mx-auto mb-4">
-            <li><span className="font-bold">Hydraulic</span></li>
-            <li><span className="font-bold">Strokes/hour:</span> 120 (BA)</li>
-            <li><span className="font-bold">Capacity (Tons):</span> 1000 (BA)</li>
-            <li><span className="font-bold">Bed Area (mm):</span> 4500 × 2500 (BA)</li>
-            <li><span className="font-bold">Shut Heights (mm):</span> 700–2200 (BA)</li>
-            <li><span className="font-bold">Cushions:</span> Ram 100 ton, Bolster 300 ton (BA)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-lg font-bold mb-4 text-center">B1 - B3 (WILKENS & MITCHEL)</h4>
-          <ul className="list-disc pl-8 text-left mx-auto mb-4">
-            <li><span className="font-bold">Mechanical</span></li>
-            <li><span className="font-bold">Strokes/hour:</span> 180</li>
-            <li><span className="font-bold">Capacity (Tons):</span> 800 (B1 & B2), 400 (B3)</li>
-            <li><span className="font-bold">Bed Area (mm):</span> 3352.8 × 2133.6 (B1 & B2), 3962.4 × 2133.6 (B3)</li>
-            <li><span className="font-bold">Shut Heights (mm):</span> 314–908 (B1 & B2), 405–915 (B3)</li>
-            <li><span className="font-bold">Cushions:</span> Ram 100 ton (B1 & B2), 120 ton (B3)</li>
-          </ul>
+      <div className="text-white">
+        <h3 className="text-xl font-bold mb-5 text-center">B Line Presses</h3>
+        <div className="flex flex-col md:flex-row md:justify-center md:gap-12 gap-8 lg:gap-24 w-full max-w-4xl mx-auto">
+          <div className="flex-1 min-w-[220px] md:min-w-[250px] lg:min-w-[280px] px-2 md:px-4">
+            <h4 className="text-lg font-bold mb-4 text-center">BA (LIE CHIEH)</h4>
+            <ul className="list-disc pl-8 text-left mx-auto mb-4">
+              <li><span className="font-bold">Hydraulic</span></li>
+              <li><span className="font-bold">Strokes/hour:</span> 120 (BA)</li>
+              <li><span className="font-bold">Capacity (Tons):</span> 1000 (BA)</li>
+              <li><span className="font-bold">Bed Area (mm):</span> 4500 × 2500 (BA)</li>
+              <li><span className="font-bold">Shut Heights (mm):</span> 700–2200 (BA)</li>
+              <li><span className="font-bold">Cushions:</span> Ram 100 ton, Bolster 300 ton (BA)</li>
+            </ul>
+          </div>
+          <div className="flex-1 min-w-[220px] md:min-w-[250px] lg:min-w-[280px] px-2 md:px-4">
+            <h4 className="text-lg font-bold mb-4 text-center">B1 - B3 (WILKENS & MITCHEL)</h4>
+            <ul className="list-disc pl-8 text-left mx-auto mb-4">
+              <li><span className="font-bold">Mechanical</span></li>
+              <li><span className="font-bold">Strokes/hour:</span> 180</li>
+              <li><span className="font-bold">Capacity (Tons):</span> 800 (B1 & B2), 400 (B3)</li>
+              <li><span className="font-bold">Bed Area (mm):</span> 3352.8 × 2133.6 (B1 & B2), 3962.4 × 2133.6 (B3)</li>
+              <li><span className="font-bold">Shut Heights (mm):</span> 314–908 (B1 & B2), 405–915 (B3)</li>
+              <li><span className="font-bold">Cushions:</span> Ram 100 ton (B1 & B2), 120 ton (B3)</li>
+            </ul>
+          </div>
         </div>
       </div>
     )

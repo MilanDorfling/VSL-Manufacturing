@@ -172,7 +172,7 @@ function LaserExpandableSections() {
 
 const Lazercutting = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-900 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* GridSVG as fixed background */}
       <GridSVG />
       <motion.div 

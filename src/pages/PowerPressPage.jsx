@@ -8,7 +8,7 @@ const PowerPressPage = () => {
   const [scrollHeight, setScrollHeight] = useState(window.innerHeight);
 
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-900 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col dark:bg-zinc-900 relative overflow-hidden">
       {/* GridSVG as fixed background, always behind */}
       <GridSVG className="fixed inset-0 w-full h-full z-0" />
       <motion.div 
