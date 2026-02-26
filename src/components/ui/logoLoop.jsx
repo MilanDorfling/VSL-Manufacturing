@@ -30,10 +30,15 @@ export default function LogoLoop() {
   }, [setContainerWidth]);
 
   // Duplicate the logos array once for seamless looping
-  const loopLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
+  const loopLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
   // Calculate the width of a single logo card (matches w-36 + mx-8)
   const logoCardWidth = 200; // 9rem (w-36) + 2rem (mx-8) * 2 sides
   const rowWidth = loopLogos.length * logoCardWidth;
+  
+  // Calculate duration: each logo takes ~1.5 seconds to scroll past
+  // Animation scrolls through half the logos (for seamless loop)
+  const secondsPerLogo = 1.5;
+  const animationDuration = (loopLogos.length / 2) * secondsPerLogo;
 
   return (
     <div className="relative w-full h-28 overflow-hidden flex items-center justify-center">
@@ -53,7 +58,7 @@ export default function LogoLoop() {
           @keyframes logo-loop-horizontal { 
           0% { transform: translateX(0); } 
           100% { transform: translateX(-${rowWidth / 2}px); } } 
-          .animate-logo-loop-horizontal { animation: logo-loop-horizontal 20s linear infinite; } `}
+          .animate-logo-loop-horizontal { animation: logo-loop-horizontal ${animationDuration}s linear infinite; } `}
       </style>
     </div>
   );

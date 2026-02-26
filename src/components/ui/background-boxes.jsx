@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
-export const Boxes = ({ className, ...rest }) => {
+export const Boxes = React.memo(({ className, ...rest }) => {
   // Much smaller grid - only animate what's visible
   const rows = new Array(15).fill(1);
   const cols = new Array(20).fill(1);
@@ -38,6 +38,7 @@ export const Boxes = ({ className, ...rest }) => {
           height: '300%',
           left: '-100%',
           top: '-100%',
+          willChange: 'transform',
         }}
       >
         {/* Extended grid starting from the exact position of animated boxes */}
@@ -97,6 +98,7 @@ export const Boxes = ({ className, ...rest }) => {
           height: '300%',
           left: '-100%',
           top: '-100%',
+          willChange: 'transform',
         }}
       >
         <div
@@ -118,6 +120,7 @@ export const Boxes = ({ className, ...rest }) => {
                 style={{ 
                   width: '54.4px',  // 64px * 0.85 = 54.4px
                   height: '27.2px', // 32px * 0.85 = 27.2px
+                  willChange: 'transform',
                 }}
                 onMouseEnter={() => {
                   // This ensures the hover effect works
@@ -138,6 +141,7 @@ export const Boxes = ({ className, ...rest }) => {
                     opacity: 0,
                     transition: { duration: 2 },
                   }}
+                  style={{ willChange: 'opacity, background-color' }}
                 />
                 {j % 3 === 0 && i % 3 === 0 ? (
                   <svg
@@ -162,4 +166,4 @@ export const Boxes = ({ className, ...rest }) => {
       </div>
     </div>
   );
-};
+});

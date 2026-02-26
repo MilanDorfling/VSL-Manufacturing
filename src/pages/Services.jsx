@@ -91,8 +91,28 @@ const Services = () => {
         <div className="absolute bottom-0 left-0 w-full h-24 bg-linear-to-b from-transparent to-white dark:to-zinc-900" />
       </div>
 
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-40">
+        <motion.h2 
+        ref={pRef}
+        variants={fadeInUpDelayed}
+        initial="hidden"
+        animate={pInView ? "visible" : "hidden"}
+        className='text-2xl font-semibold'>
+          "You don't start from the top. <br />The best view is actually from the bottom looking up."
+        </motion.h2>
+        <motion.p
+          ref={pRef}
+          variants={fadeInUpDelayed}
+          initial="hidden"
+          animate={pInView ? "visible" : "hidden"}
+          className='text-gray-600 dark:text-gray-400 mt-4 text-lg'
+        >
+          - Vuyo Skweyiya
+        </motion.p>
+      </div>
+
       {/* Service Image Section - moved below h1/p */}
-      <div className="flex justify-center items-center mt-8 mb-8 xl:mt-32">
+      <div className="flex justify-center items-center mt-8 mb-8 xl:mt-2">
         <div className="relative mx-auto w-full h-80 sm:h-[400px] md:h-[480px] lg:h-[640px] xl:w-[1020px] 2xl:w-[1440px] px-4 sm:px-8 md:px-12 lg:px-20 xl:mt-12 2xl:mt-20">
           {/* Use plain img for xl+ to reduce animation cost */}
           {isXL ? (

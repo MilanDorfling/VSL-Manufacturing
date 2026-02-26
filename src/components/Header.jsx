@@ -11,6 +11,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const location = useLocation();
+  
+  // Memoize Boxes component to prevent re-renders on scroll
+  const MemoizedBoxes = React.useMemo(() => <Boxes />, []);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +44,7 @@ const Header = () => {
       {/* Top Logo Section with Background Boxes - Not sticky */}
       <div className="relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 h-[140px]">
         <div className="absolute inset-0 w-full h-full z-10" style={{background: '#18181b'}}>
-          <Boxes />
+          {MemoizedBoxes}
         </div>
         {/* Absolutely centered logo */}
         <motion.div
