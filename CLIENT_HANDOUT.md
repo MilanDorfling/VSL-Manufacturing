@@ -138,9 +138,9 @@
 
 ## Contact Information
 
-**Developer**: [Your Name]  
-**Email**: [Your Email]  
-**Phone**: [Your Phone]
+**Developer**: [Milan Dorfling]  
+**Email**: [milandorfling80@gmail.com]  
+**Phone**: [+27 76-602-8896]
 
 ---
 

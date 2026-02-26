@@ -117,8 +117,11 @@ const Home = () => {
           )}
         </div>
         <div className="w-full flex flex-col items-center gap-4 md:gap-6 mt-6 md:mt-10 px-4 md:px-20">
-          <p className="text-white text-base md:text-lg px-4 md:px-20 text-wrap">
+          <h3 className="text-white text-base md:text-xl px-4 md:px-20 text-wrap">
             “This facility represents the culmination of years of rebuilding, of restoring jobs, and of proving that South African suppliers can compete at the highest level of global automotive manufacturing.”
+          </h3>
+          <p className="text-neutral-400 text-sm md:text-base px-4 md:px-20 text-wrap">
+            — Vuyo Skweyiya
           </p>
         </div>
       </section>
