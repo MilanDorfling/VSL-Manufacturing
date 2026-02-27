@@ -54,7 +54,7 @@ const Header = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="src/assets/pictures/no-bg-logos.png"
+            src="/logo.png"
             alt="VSL Manufacturing Logo"
             className="w-48 h-32 object-contain drop-shadow-lg"
             draggable="false"
@@ -94,7 +94,7 @@ const Header = () => {
               isScrolled ? 'opacity-100' : 'opacity-0 md:opacity-0'
             }`}>
               <img
-                src="src/assets/pictures/no-bg-logos.png"
+                src="/logo.png"
                 alt="VSL Manufacturing Logo"
                 className="w-8 h-8 object-contain mr-2"
                 draggable="false"
