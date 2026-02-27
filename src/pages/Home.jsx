@@ -75,7 +75,7 @@ const Home = () => {
             About us
           </h2>
           
-          <p className="text-white text-base md:text-lg px-6 md:px-20 text-wrap">
+          <p className="dark:text-white text-base md:text-lg px-6 md:px-20 text-wrap">
             VSL Manufacturing is a leading South African engineering and manufacturing company with advanced facilities in Gqeberha (Port Elizabeth) and Komani (Queenstown). Our team combines decades of technical expertise with a passion for precision, delivering high-quality metal stamping, forming, and fabrication solutions to clients across diverse industries. We pride ourselves on our state-of-the-art press lines, rigorous quality standards, and a culture of continuous improvement that ensures every project meets the highest expectations.
               <br/>
               <br/>
@@ -117,7 +117,7 @@ const Home = () => {
           )}
         </div>
         <div className="w-full flex flex-col items-center gap-4 md:gap-6 mt-6 md:mt-10 px-4 md:px-20">
-          <h3 className="text-white text-base md:text-xl px-4 md:px-20 text-wrap">
+          <h3 className="dark:text-white text-base md:text-xl px-4 md:px-20 text-wrap">
             “This facility represents the culmination of years of rebuilding, of restoring jobs, and of proving that South African suppliers can compete at the highest level of global automotive manufacturing.”
           </h3>
           <p className="text-neutral-400 text-sm md:text-base px-4 md:px-20 text-wrap">

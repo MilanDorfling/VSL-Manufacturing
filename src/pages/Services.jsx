@@ -41,7 +41,7 @@ const Services = () => {
 
   // Memoized Service Card to prevent unnecessary re-renders
   const ServiceCard = React.useMemo(() => ({ title, desc, onClick }) => (
-    <div className="bg-white/90 dark:bg-zinc-900/70 rounded-xl shadow-lg p-6 flex flex-col min-h-[220px] max-w-md mx-auto border border-gray-200 dark:border-zinc-800 transition-transform hover:scale-105 hover:shadow-2xl">
+    <div className="bg-white/90 dark:bg-zinc-900/70 rounded-xl shadow-lg p-8 flex flex-col min-h-[220px] max-w-md mx-auto border border-gray-200 dark:border-zinc-800 transition-transform hover:scale-105 hover:shadow-2xl">
       <h2 className="text-2xl font-bold mb-2 text-neutral-900 dark:text-white">{title}</h2>
       <p className="text-gray-700 dark:text-gray-300 mb-6 text-base">{desc}</p>
       <button
@@ -144,7 +144,7 @@ const Services = () => {
             className="hidden md:flex absolute inset-0 flex-col justify-end items-center z-10 pb-8 md:pb-12 lg:pb-20"
             style={isXL ? { pointerEvents: 'auto' } : {}}
           >
-            <div className="grid grid-cols-2 gap-6 w-full max-w-3xl mx-auto px-2 md:px-0">
+            <div className="grid grid-cols-2 gap-10 w-full max-w-5xl mx-auto px-2 md:px-0">
               <ServiceCard
                 title="Power Press"
                 desc="High-precision power pressing for all your manufacturing needs."

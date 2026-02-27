@@ -147,3 +147,5 @@
 **Project Started**: November 2025  
 **Presented**: February 2026  
 **Ready for Deployment**: Now
+
+send screen shot of each page to vuyo
