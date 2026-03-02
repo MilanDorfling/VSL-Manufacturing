@@ -40,7 +40,7 @@ function Contact() {
       initial={{ x: -60, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="shadow-input mx-auto w-full max-w-2xl rounded-none bg-white text-black p-4 md:rounded-2xl md:p-8 dark:bg-zinc-900 dark:text-white border border-neutral-600 px-2 sm:px-0 md:px-8"
+      className="shadow-input mx-auto w-full max-w-2xl rounded-none bg-white text-black p-4 md:rounded-2xl md:p-8 dark:bg-zinc-900 dark:text-white border border-neutral-600"
     >
       <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
         Get in Touch

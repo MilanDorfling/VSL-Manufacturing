@@ -16,18 +16,18 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <div className="relative min-h-screen w-full flex flex-col overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {/* SVG Hexagon background at lowest layer */}
       <div className="absolute inset-0 z-0">
         <HexagonBackground mouse={mouse} />
       </div>
       {/* Contact form above background */}
-      <div className="relative z-10 mt-12">
+      <div className="relative z-10 mt-12 px-4">
         <Contact />
       </div>
       {/* Animated pin cards for location */}
-      <section className="pt-0 pb-0 mt-0 relative z-10">
-        <div className="container mx-auto mt-0! pt-0!">
+      <section className="pt-0 pb-0 mt-0 relative z-10 w-full overflow-hidden">
+        <div className="w-full mt-0! pt-0!">
           <AnimatedPin />
         </div>
       </section>

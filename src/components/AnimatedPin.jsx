@@ -123,7 +123,7 @@ export function AnimatedPin() {
           <button
             aria-label="Previous"
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-zinc-400/50 text-white rounded-full shadow hover:bg-cyan-700 transition w-12 h-12 flex items-center justify-center"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 100 }}
             onClick={() => { setDirection(-1); setCurrent(current - 1); }}
             disabled={current === 0}
           >
@@ -175,7 +175,7 @@ export function AnimatedPin() {
           <button
             aria-label="Next"
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-zinc-400/50 text-white rounded-full shadow hover:bg-cyan-700 transition w-12 h-12 flex items-center justify-center"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 100 }}
             onClick={() => { setDirection(1); setCurrent(current + 1); }}
             disabled={current === pins.length - 1}
           >
@@ -200,7 +200,7 @@ export function AnimatedPin() {
   return (
     <div
       ref={desktopScrollRef}
-      className="h-160 w-full flex flex-row gap-6 mt-12 px-4 items-center justify-start overflow-x-auto cursor-grab select-none scrollbar-hide pl-4 lg:justify-center lg:overflow-visible lg:cursor-default lg:pl-0"
+      className="h-160 w-full flex flex-row gap-6 mt-12 px-4 items-center justify-start overflow-hidden cursor-grab select-none scrollbar-hide pl-4 lg:justify-center lg:overflow-hidden lg:cursor-default lg:pl-0"
       style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
     >
       <style>{`
