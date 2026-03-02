@@ -7,12 +7,17 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  css: {
+    postcss: './postcss.config.js',
+  },
   server: {
     host: '0.0.0.0',
     port: 5173, // or your chosen port
   },
   build: {
     assetsInlineLimit: 0, // Don't inline any assets as base64
+    target: 'es2015', // Better browser compatibility
+    cssTarget: 'chrome61', // CSS compatibility target
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
