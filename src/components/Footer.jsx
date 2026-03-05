@@ -94,6 +94,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {/* Developers page link at bottom */}
+      <div className="relative z-10 w-full flex justify-center py-4 lg:pt-20">
+        <Link to="/developers" className="text-xs md:text-sm text-gray-500 transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">
+          Developers Page
+        </Link>
+      </div>
     </footer>
   );
 };
