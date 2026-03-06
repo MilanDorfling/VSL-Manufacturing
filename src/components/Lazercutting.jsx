@@ -95,33 +95,46 @@ const laserSections = [
 function LaserExpandableSections() {
   const [openIdx, setOpenIdx] = React.useState(null);
   return (
-    <div className="flex flex-col w-full gap-8 px-2 sm:px-4 mt-10">
+    <div className="flex flex-col w-full gap-8 px-2 md:px-0 mt-10">
       {laserSections.map((section, idx) => (
         <div key={idx} className="flex flex-col items-center w-full">
           <motion.div
-            className={`relative w-full max-w-6xl rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group ${openIdx === idx ? 'sm:ring-4 sm:ring-cyan-400' : ''}`}
+            className="relative w-full max-w-6xl md:max-w-none rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group"
             onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
             initial={false}
             animate={{
               scale: openIdx === idx ? 1.03 : 1,
               height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem',
             }}
-            transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-            style={{ height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem' }}
+            transition={openIdx === idx ? { duration: 0 } : { duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            style={{
+              height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem',
+              outline: openIdx === idx && window.innerWidth >= 640 ? '4px solid rgb(34, 211, 238)' : 'none',
+              willChange: 'scale, height, transform',
+            }}
           >
             {/* Solid bg overlay to prevent SVG bleed-through */}
-            <div
-              className={`absolute inset-0 z-0 transition-all duration-500 pointer-events-none ${openIdx === idx ? 'bg-transparent' : 'bg-zinc-950'}`}
-              style={{ backgroundColor: openIdx === idx ? 'transparent' : 'rgba(24,24,27,1)' }}
+            <motion.div
+              className="absolute inset-0 z-0 pointer-events-none"
+              initial={false}
+              animate={{
+                backgroundColor: openIdx === idx ? 'rgba(24,24,27,0)' : 'rgba(24,24,27,1)',
+              }}
+              transition={openIdx === idx ? { duration: 0 } : { duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              style={{ willChange: 'background-color' }}
             />
-            <img
+            <motion.img
               src={section.img}
               alt={section.alt}
-              className={
-                `object-cover w-full h-full transition-all duration-500 relative z-10 ` +
-                (openIdx === idx ? 'opacity-100 scale-105' : 'opacity-60') +
-                ' group-hover:grayscale-0 grayscale group-hover:opacity-100'
-              }
+              className="object-cover w-full h-full relative z-10"
+              initial={false}
+              animate={{
+                opacity: openIdx === idx ? 1 : 0.6,
+                scale: openIdx === idx ? 1.05 : 1,
+                filter: openIdx === idx ? 'grayscale(0%)' : 'grayscale(100%)',
+              }}
+              transition={openIdx === idx ? { duration: 0 } : { duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              style={{ willChange: 'opacity, transform, filter' }}
             />
             {/* Title overlay bottom left, hide when open */}
             <AnimatePresence>
@@ -151,16 +164,21 @@ function LaserExpandableSections() {
               {openIdx === idx && (
                 <motion.div
                   key="info"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 30 }}
-                  transition={{ duration: 0.4 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   className="absolute inset-0 flex items-center justify-center bg-black/80 p-4 sm:p-6 text-white z-20"
                   style={{ pointerEvents: 'none' }}
                 >
-                  <div className="w-full max-w-4xl max-h-[calc(100%-0.5rem)] sm:max-h-[calc(100%-1rem)] mx-auto overflow-y-auto px-2 sm:px-4 py-2 text-center pointer-events-auto">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.05, ease: [0.4, 0, 0.2, 1] }}
+                      className="w-full max-w-full md:max-w-6xl max-h-[calc(100%-0.5rem)] sm:max-h-[calc(100%-1rem)] mx-auto overflow-y-auto overflow-x-auto px-1 sm:px-3 md:px-4 py-2 text-center pointer-events-auto"
+                  >
                     {section.info}
-                  </div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>
