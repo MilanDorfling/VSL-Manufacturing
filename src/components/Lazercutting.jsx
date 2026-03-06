@@ -126,12 +126,16 @@ function LaserExpandableSections() {
             <motion.img
               src={section.img}
               alt={section.alt}
-              className="object-cover w-full h-full relative z-10"
+              className="object-cover w-full h-full relative z-10 cursor-pointer"
               initial={false}
               animate={{
                 opacity: openIdx === idx ? 1 : 0.6,
                 scale: openIdx === idx ? 1.05 : 1,
                 filter: openIdx === idx ? 'grayscale(0%)' : 'grayscale(100%)',
+              }}
+              whileHover={{
+                opacity: 1,
+                filter: 'grayscale(0%)',
               }}
               transition={openIdx === idx ? { duration: 0 } : { duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               style={{ willChange: 'opacity, transform, filter' }}
