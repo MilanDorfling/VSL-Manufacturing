@@ -95,19 +95,19 @@ const laserSections = [
 function LaserExpandableSections() {
   const [openIdx, setOpenIdx] = React.useState(null);
   return (
-    <div className="flex flex-col w-full gap-8 px-0 mt-10">
+    <div className="flex flex-col w-full gap-8 px-2 sm:px-4 mt-10">
       {laserSections.map((section, idx) => (
         <div key={idx} className="flex flex-col items-center w-full">
           <motion.div
-            className={`relative w-full rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group ${openIdx === idx ? 'ring-4 ring-cyan-400' : ''}`}
+            className={`relative w-full max-w-6xl rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group ${openIdx === idx ? 'sm:ring-4 sm:ring-cyan-400' : ''}`}
             onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
             initial={false}
             animate={{
               scale: openIdx === idx ? 1.03 : 1,
-              height: openIdx === idx ? '30rem' : '15rem',
+              height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem',
             }}
             transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-            style={{ height: openIdx === idx ? '22rem' : '11rem' }}
+            style={{ height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem' }}
           >
             {/* Solid bg overlay to prevent SVG bleed-through */}
             <div
@@ -122,7 +122,6 @@ function LaserExpandableSections() {
                 (openIdx === idx ? 'opacity-100 scale-105' : 'opacity-60') +
                 ' group-hover:grayscale-0 grayscale group-hover:opacity-100'
               }
-              style={{ width: '100vw', maxWidth: '100vw' }}
             />
             {/* Title overlay bottom left, hide when open */}
             <AnimatePresence>
@@ -136,7 +135,7 @@ function LaserExpandableSections() {
                   style={{ width: 'auto', minWidth: '0' }}
                 >
                   <motion.h2
-                    className="text-3xl font-extrabold text-white px-6 py-2 mb-4 ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight"
+                    className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white px-4 sm:px-6 py-2 mb-3 sm:mb-4 ml-2 sm:ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight"
                     initial={false}
                     animate={{ y: '0%' }}
                     whileHover={{ y: '-30%' }}
@@ -156,10 +155,12 @@ function LaserExpandableSections() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 30 }}
                   transition={{ duration: 0.4 }}
-                  className="absolute inset-0 flex items-center justify-center bg-black/80 p-6 text-white z-20"
+                  className="absolute inset-0 flex items-center justify-center bg-black/80 p-4 sm:p-6 text-white z-20"
                   style={{ pointerEvents: 'none' }}
                 >
-                  <div className="max-w-xl mx-auto text-center pointer-events-auto">{section.info}</div>
+                  <div className="w-full max-w-4xl max-h-[calc(100%-0.5rem)] sm:max-h-[calc(100%-1rem)] mx-auto overflow-y-auto px-2 sm:px-4 py-2 text-center pointer-events-auto">
+                    {section.info}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -211,9 +212,10 @@ const Lazercutting = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.8 }}
-            className="text-2xl font-light max-w-2xl text-neutral-200 text-center md:text-left md:mb-0"
+            className="text-2xl font-light max-w-2xl text-neutral-200 text-start md:text-left md:mb-0"
           >
             Our Port Elizabeth facility features the newly commissioned Trumpf TruLaser Cell 5030, a state-of-the-art system for both 2D and 3D laser cutting. This machine delivers outstanding precision, flexibility, and efficiency for a wide range of applications.<br /><br />
+            <br/>
             Our in-house design office provides expert design and programming support, ensuring seamless project execution from concept to final cut.
           </motion.h3>
           {/* Video on the right */}

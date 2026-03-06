@@ -229,7 +229,7 @@ const PowerPress = () => {
         Discover the capabilities of our advanced press line below. Learn more about the unique features, technical specifications, and advantages of every press in our facility. Dive in to see how our equipment delivers precision and performance for every project.
       </p>
       </div>
-      <div className="flex flex-col w-full gap-8 px-0">
+      <div className="flex flex-col w-full gap-8 px-2 sm:px-4">
         {/* Only show the PE and Queenstown section titles once at the start of each group */}
         {(() => {
           let lastPlate = null;
@@ -239,9 +239,9 @@ const PowerPress = () => {
             return (
               <React.Fragment key={idx}>
                 {showPlateTitle && (
-                  <div className="w-full max-w-6xl flex flex-col items-start mb-2 px-4 mt-15">
+                  <div className="w-full max-w-6xl flex flex-col items-start mb-2 px-1 sm:px-4 mt-12 sm:mt-15">
                     <motion.h2
-                      className="text-3xl font-extrabold text-white px-6 py-2 mb-4 ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight uppercase"
+                      className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white px-4 sm:px-6 py-2 mb-3 sm:mb-4 ml-2 sm:ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight uppercase"
                       initial={{ y: 40, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       whileHover={{ y: '-30%' }}
@@ -254,19 +254,19 @@ const PowerPress = () => {
                 )}
                 <div className="flex flex-col items-center w-full">
                   <motion.div
-                    className={`relative w-full rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group ${openIdx === idx ? 'ring-4 ring-blue-400' : ''}`}
+                    className={`relative w-full max-w-6xl rounded-none overflow-hidden shadow-lg border-0 cursor-pointer group ${openIdx === idx ? 'sm:ring-4 sm:ring-blue-400' : ''}`}
                     onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
                     initial={false}
                     animate={{
                       scale: openIdx === idx ? 1.03 : 1,
-                      height: openIdx === idx ? '30rem' : '15rem',
+                      height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem',
                     }}
                     transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-                    style={{ height: openIdx === idx ? '22rem' : '11rem' }}
+                    style={{ height: openIdx === idx ? 'min(70vh, 36rem)' : '12rem' }}
                   >
                     {/* Solid bg overlay to prevent SVG bleed-through */}
                     <div
-                      className={`absolute inset-0 z-0 transition-all duration-500 pointer-events-none ${openIdx === idx || document?.body?.classList?.contains('group-hover') ? 'bg-transparent' : 'bg-zinc-950'}`}
+                      className={`absolute inset-0 z-0 transition-all duration-500 pointer-events-none ${openIdx === idx ? 'bg-transparent' : 'bg-zinc-950'}`}
                       style={{ backgroundColor: openIdx === idx ? 'transparent' : 'rgba(24,24,27,1)' }}
                     />
                     <img
@@ -277,7 +277,6 @@ const PowerPress = () => {
                         (openIdx === idx ? 'opacity-100 scale-105' : 'opacity-60') +
                         ' group-hover:grayscale-0 grayscale group-hover:opacity-100'
                       }
-                      style={{ width: '100vw', maxWidth: '100vw' }}
                     />
                     {/* Title overlay bottom left, hide when open */}
                     <AnimatePresence>
@@ -291,7 +290,7 @@ const PowerPress = () => {
                           style={{ width: 'auto', minWidth: '0' }}
                         >
                           <motion.h2
-                            className="text-3xl font-extrabold text-white px-6 py-2 mb-4 ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight"
+                            className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white px-4 sm:px-6 py-2 mb-3 sm:mb-4 ml-2 sm:ml-4 bg-black border-4 border-black rounded drop-shadow-lg tracking-tight"
                             initial={false}
                             animate={{ y: '0%' }}
                             whileHover={{ y: '-30%' }}
@@ -311,10 +310,12 @@ const PowerPress = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 30 }}
                           transition={{ duration: 0.4 }}
-                          className="absolute inset-0 flex items-center justify-center bg-black/80 p-6 text-white z-20"
+                          className="absolute inset-0 flex items-center justify-center bg-black/80 p-4 sm:p-6 text-white z-20"
                           style={{ pointerEvents: 'none' }}
                         >
-                          <div className="max-w-xl mx-auto text-center pointer-events-auto">{section.info}</div>
+                          <div className="w-full max-w-4xl max-h-[calc(100%-0.5rem)] sm:max-h-[calc(100%-1rem)] mx-auto overflow-y-auto px-2 sm:px-4 py-2 text-center pointer-events-auto">
+                            {section.info}
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
