@@ -1,16 +1,15 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Boxes } from './ui';
-import { cn } from '../lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Boxes } from './ui';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
-    const [servicesDropdownOpen, setServicesDropdownOpen] = React.useState(false);
-  
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
   
   // Memoize Boxes component to prevent re-renders on scroll
   const MemoizedBoxes = React.useMemo(() => <Boxes />, []);
@@ -30,6 +29,39 @@ const Header = () => {
     { name: 'Services', path: '/services' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const homeSections = [
+    { name: 'Overview', id: 'capability' },
+    { name: 'Journey & Facilities', id: 'journey' },
+    { name: 'Capabilities & Quality', id: 'capabilities-grid' },
+    { name: 'Impact', id: 'impact' },
+    { name: 'Press Line & Precision', id: 'press-line' },
+    { name: 'Leadership', id: 'leadership' },
+  ];
+
+  const scrollToHomeSection = (sectionId) => {
+    const target = document.getElementById(sectionId);
+    if (!target) {
+      return;
+    }
+
+    const headerOffset = 220;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    const scrollTop = Math.max(0, targetTop - headerOffset);
+    window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+    window.history.replaceState(null, '', `/#${sectionId}`);
+  };
+
+  const handleSectionNavigate = (sectionId) => {
+    setIsOpen(false);
+
+    if (isHomePage) {
+      scrollToHomeSection(sectionId);
+      return;
+    }
+
+    navigate(`/#${sectionId}`);
+  };
   
   
   const BottomGradient = () => (
@@ -88,21 +120,23 @@ const Header = () => {
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center py-4 relative">
-            {/* Small Logo for Mobile/Scrolled State */}
-            <div className={`flex items-center transition-opacity duration-300 ${
-              isScrolled ? 'opacity-100' : 'opacity-0 md:opacity-0'
-            }`}>
-              <img
-                src="/logo.png"
-                alt="VSL Manufacturing Logo"
-                className="w-8 h-8 object-contain mr-2"
-                draggable="false"
-              />
-              <span className="font-semibold text-zinc-900 dark:font-semibold dark:text-zinc-200 hidden sm:block">Manufacturing</span>
-            </div>
+          <div className="py-4">
+            <div className="flex items-center relative">
+              {/* Small Logo for Mobile/Scrolled State */}
+              <div className={`flex items-center transition-opacity duration-300 ${
+                isScrolled ? 'opacity-100' : 'opacity-0 md:opacity-0'
+              }`}>
+                <img
+                  src="/logo.png"
+                  alt="VSL Manufacturing Logo"
+                  className="w-8 h-8 object-contain mr-2"
+                  draggable="false"
+                />
+                <span className="font-semibold text-zinc-900 dark:font-semibold dark:text-zinc-200 hidden sm:block">Manufacturing</span>
+              </div>
+
               {/* Navbar Buttons with Contact Form Effect */}
-              <div className="flex gap-4 justify-center mx-auto pr-38">
+              <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 justify-center">
                 <Link
                   to="/"
                   className="group/btn shadow-input relative flex h-10 px-6 items-center justify-center rounded-md bg-gray-50 font-medium text-black dark:bg-zinc-900 dark:text-white dark:shadow-[0px_0px_1px_1px_#262626]"
@@ -125,6 +159,33 @@ const Header = () => {
                   <BottomGradient />
                 </Link>
               </div>
+            </div>
+
+            <AnimatePresence>
+              {isHomePage && isScrolled && (
+                <motion.div
+                  className="mt-3 overflow-x-auto pb-1"
+                  initial={{ opacity: 0, y: -16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                >
+                  <div className="mx-auto flex w-max items-center gap-2 rounded-lg border border-zinc-200/70 bg-white/85 px-2 py-2 shadow-sm dark:border-zinc-700/80 dark:bg-zinc-900/80">
+                    {homeSections.map((section) => (
+                      <button
+                        key={section.id}
+                        type="button"
+                        onClick={() => handleSectionNavigate(section.id)}
+                        className="group/btn shadow-input relative flex h-9 items-center justify-center rounded-md bg-gray-50 px-3 text-xs font-semibold text-black transition dark:bg-zinc-900 dark:text-white dark:shadow-[0px_0px_1px_1px_#262626]"
+                      >
+                        {section.name}
+                        <BottomGradient />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.nav>
@@ -172,6 +233,24 @@ const Header = () => {
                     </Link>
                   );
                 })}
+
+                {isHomePage ? (
+                  <div className="pt-2">
+                    <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wide text-zinc-400">Explore Home</p>
+                    <div className="flex flex-col gap-2">
+                      {homeSections.map((section) => (
+                        <button
+                          key={section.id}
+                          type="button"
+                          onClick={() => handleSectionNavigate(section.id)}
+                          className="text-left text-sm font-medium text-zinc-100 transition hover:text-cyan-400 px-3 py-1"
+                        >
+                          {section.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </nav>
           </motion.div>

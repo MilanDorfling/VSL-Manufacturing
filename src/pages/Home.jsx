@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { DotBackgroundDemo } from '../components/ui/dotSVG';
 import {
   HomeIntro,
@@ -42,6 +43,7 @@ const isReloadNavigation = () => {
 };
 
 const Home = () => {
+  const location = useLocation();
   const [introUnlocked, setIntroUnlocked] = React.useState(() => {
     if (typeof window === 'undefined') {
       return false;
@@ -106,6 +108,35 @@ const Home = () => {
     return () => window.clearTimeout(scrollTimer);
   }, [introUnlocked]);
 
+  React.useEffect(() => {
+    if (!introUnlocked || !location.hash) {
+      return;
+    }
+
+    const sectionId = decodeURIComponent(location.hash.slice(1));
+    let attempts = 0;
+    let timer;
+
+    const scrollToHashSection = () => {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        const headerOffset = 220;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY;
+        const scrollTop = Math.max(0, targetTop - headerOffset);
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+        return;
+      }
+
+      attempts += 1;
+      if (attempts < 15) {
+        timer = window.setTimeout(scrollToHashSection, 120);
+      }
+    };
+
+    timer = window.setTimeout(scrollToHashSection, 120);
+    return () => window.clearTimeout(timer);
+  }, [introUnlocked, location.hash]);
+
   const handleIntroCta = () => {
     window.sessionStorage.setItem(HOME_INTRO_SEEN_KEY, 'true');
     setIntroUnlocked(true);
@@ -136,27 +167,45 @@ const Home = () => {
             transition={{ duration: 0.55, ease: 'easeOut' }}
           >
           <SectionShell id={firstSectionId} className="pb-12 sm:pb-16 md:pb-24">
-            <Capability className="mb-12 md:mb-16 mt-24" />
+            <section id="capability" className="scroll-mt-56">
+              <Capability className="mb-12 md:mb-16 mt-24" />
+            </section>
 
-            <VideoContainer
-              src={factoryTourVideo}
-              title="VSL facility tour"
-              wrapperClassName="w-full flex justify-center mb-14 md:mb-28"
-            />
+            <section id="facility-tour" className="scroll-mt-56">
+              <VideoContainer
+                src={factoryTourVideo}
+                title="VSL facility tour"
+                wrapperClassName="w-full flex justify-center mb-14 md:mb-28"
+              />
+            </section>
 
-            <EngineeringSection className="mb-14 md:mb-28" />
+            <section id="engineering" className="scroll-mt-56">
+              <EngineeringSection className="mb-14 md:mb-28" />
+            </section>
 
-            <JourneySection className="mb-14 md:mb-28" />
+            <section id="journey" className="scroll-mt-56">
+              <JourneySection className="mb-14 md:mb-28" />
+            </section>
 
-            <FacilitiesSection className="mb-14 md:mb-28" />
+            <section id="facilities" className="scroll-mt-56">
+              <FacilitiesSection className="mb-14 md:mb-28" />
+            </section>
 
-            <IndustriesSection className="mb-14 md:mb-28" />
+            <section id="industries" className="scroll-mt-56">
+              <IndustriesSection className="mb-14 md:mb-28" />
+            </section>
 
-            <CapabilitiesSection className="mb-14 md:mb-28" />
+            <section id="capabilities-grid" className="scroll-mt-56">
+              <CapabilitiesSection className="mb-14 md:mb-28" />
+            </section>
 
-            <QualitySection className="mb-14 md:mb-28 pb-16" />
+            <section id="quality" className="scroll-mt-56">
+              <QualitySection className="mb-14 md:mb-28 pb-16" />
+            </section>
 
-            <PartnersSection className="mb-12 md:mb-16" />
+            <section id="partners" className="scroll-mt-56">
+              <PartnersSection className="mb-12 md:mb-16" />
+            </section>
           </SectionShell>
 
           <div className="w-full -mt-6 md:-mt-24 mb-12 md:mb-24">
@@ -164,23 +213,37 @@ const Home = () => {
           </div>
 
           <SectionShell className="pb-12 sm:pb-16 md:pb-24">
-            <ImpactSection className="mb-14 md:mb-28" />
+            <section id="impact" className="scroll-mt-56">
+              <ImpactSection className="mb-14 md:mb-28" />
+            </section>
 
-            <JourneyMilestoneCards className="mb-14 md:mb-28" />
+            <section id="milestones" className="scroll-mt-56">
+              <JourneyMilestoneCards className="mb-14 md:mb-28" />
+            </section>
 
-            <PressLineSummarySection className="mb-14 md:mb-28" />
+            <section id="press-line" className="scroll-mt-56">
+              <PressLineSummarySection className="mb-14 md:mb-28" />
+            </section>
 
-            <PrecisionSection className="mb-14 md:mb-28" />
+            <section id="precision" className="scroll-mt-56">
+              <PrecisionSection className="mb-14 md:mb-28" />
+            </section>
 
-            <LeadershipBannerSection className="mb-14 md:mb-28" />
+            <section id="leadership" className="scroll-mt-56">
+              <LeadershipBannerSection className="mb-14 md:mb-28" />
+            </section>
 
-            <ClosingBannerSection className="mb-14 md:mb-14" />
+            <section id="closing" className="scroll-mt-56">
+              <ClosingBannerSection className="mb-14 md:mb-14" />
+            </section>
 
-            <VideoContainer
-              src={closingVideo}
-              title="VSL closing showcase"
-              wrapperClassName="w-full flex justify-center mb-14 md:mb-14"
-            />
+            <section id="closing-video" className="scroll-mt-56">
+              <VideoContainer
+                src={closingVideo}
+                title="VSL closing showcase"
+                wrapperClassName="w-full flex justify-center mb-14 md:mb-14"
+              />
+            </section>
           </SectionShell>
           </motion.div>
         )}
