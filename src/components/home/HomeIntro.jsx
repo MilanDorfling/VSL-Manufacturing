@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Spotlight } from '../ui/Spotlight';
 import { motion, AnimatePresence } from 'framer-motion';
-import pressLineImage from '../../assets/pictures/SWD13740.jpg';
+import pressLineImage from '../../assets/pictures/SWD13740.JPG';
 
 // Custom hook to detect if screen is mobile (below md)
 function useIsMobile() {

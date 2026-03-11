@@ -5,7 +5,7 @@ import SplitSection from './SplitSection';
 import MediaFrame from './MediaFrame';
 import { HoverCard } from '../ui';
 import komaniAerial from '../../assets/pictures/Aerial 2.JPG';
-import komaniPlant from '../../assets/pictures/040.JPG';
+import komaniPlant from '../../assets/pictures/040.jpg';
 import gqeberhaAerial from '../../assets/pictures/DJI_0602.JPG';
 import gqeberhaPlant from '../../assets/pictures/SWD13722.JPG';
 

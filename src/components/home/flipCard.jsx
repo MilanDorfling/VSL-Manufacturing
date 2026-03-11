@@ -1,6 +1,6 @@
 import React from "react";
 import innovation from "../../assets/pictures/VSL Opening 27.11.2025 355.jpeg";
-import Teamwork from "../../assets/pictures/SWD13618.jpg";
+import Teamwork from "../../assets/pictures/SWD13618.JPG";
 import Focus from "../../assets/pictures/VSL Opening 27.11.2025 446.jpeg";
 import Efficiency from "../../assets/pictures/Efficiency.jpeg";
 import Security from "../../assets/pictures/Security.jpeg";
