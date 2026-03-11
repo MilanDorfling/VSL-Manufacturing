@@ -3,6 +3,7 @@ import SectionHeader from './SectionHeader';
 import TextBlock from './TextBlock';
 import SplitSection from './SplitSection';
 import MediaFrame from './MediaFrame';
+import img from '../../assets/pictures/SWD13722.JPG';
 
 const defaultParagraphs = [
   'At VSL Manufacturing, our operations are built around precision, reliability, and continuous improvement.',
@@ -13,7 +14,7 @@ const defaultParagraphs = [
 const EngineeringSection = ({
   title = 'Engineering the Future of Manufacturing',
   paragraphs = defaultParagraphs,
-  imageSrc,
+  imageSrc = img,
   imageAlt = 'VSL Manufacturing facility',
   imagePosition = 'left',
   className = '',
