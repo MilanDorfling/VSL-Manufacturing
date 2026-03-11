@@ -1,25 +1,29 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 export const Boxes = React.memo(({ className, ...rest }) => {
-  // Much smaller grid - only animate what's visible
-  const rows = new Array(15).fill(1);
-  const cols = new Array(20).fill(1);
-  
-  let colors = [
-    "#3b82f6", // blue-500
-    "#1d4ed8", // blue-700
-    "#60a5fa", // blue-400
-    "#2563eb", // blue-600
-    "#1e40af", // blue-800
-    "#06b6d4", // cyan-500
-    "#0891b2", // cyan-600
-  ];
+  const rowCount = 15;
+  const colCount = 20;
+  const colors = React.useMemo(
+    () => ["#3b82f6", "#1d4ed8", "#60a5fa", "#2563eb", "#1e40af", "#06b6d4", "#0891b2"],
+    [],
+  );
 
-  const getRandomColor = () => {
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
+  const cells = React.useMemo(() => {
+    const allCells = [];
+    for (let i = 0; i < rowCount; i += 1) {
+      for (let j = 0; j < colCount; j += 1) {
+        // Deterministic color index keeps visuals stable across re-renders.
+        const colorIndex = (i * 13 + j * 7) % colors.length;
+        allCells.push({
+          key: `${i}-${j}`,
+          color: colors[colorIndex],
+          showPlus: i % 3 === 0 && j % 3 === 0,
+        });
+      }
+    }
+    return allCells;
+  }, [colors]);
 
   return (
     <div
@@ -112,38 +116,16 @@ export const Boxes = React.memo(({ className, ...rest }) => {
             gap: 0,
           }}
         >
-          {rows.map((_, i) => (
-            cols.map((_, j) => (
-              <motion.div
-                key={`${i}-${j}`}
-                className="relative cursor-pointer"
-                style={{ 
-                  width: '54.4px',  // 64px * 0.85 = 54.4px
-                  height: '27.2px', // 32px * 0.85 = 27.2px
-                  willChange: 'transform',
-                }}
-                onMouseEnter={() => {
-                  // This ensures the hover effect works
+          {cells.map((cell) => (
+              <div
+                key={cell.key}
+                className="relative"
+                style={{
+                  width: '54.4px',
+                  height: '27.2px',
                 }}
               >
-                <motion.div
-                  className="absolute inset-0 w-full h-full"
-                  initial={{ 
-                    backgroundColor: "transparent",
-                    opacity: 0
-                  }}
-                  whileHover={{
-                    backgroundColor: getRandomColor(),
-                    opacity: 0.8,
-                    transition: { duration: 0.1 },
-                  }}
-                  animate={{
-                    opacity: 0,
-                    transition: { duration: 2 },
-                  }}
-                  style={{ willChange: 'opacity, background-color' }}
-                />
-                {j % 3 === 0 && i % 3 === 0 ? (
+                {cell.showPlus ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -159,11 +141,12 @@ export const Boxes = React.memo(({ className, ...rest }) => {
                     />
                   </svg>
                 ) : null}
-              </motion.div>
-            ))
+              </div>
           ))}
         </div>
       </div>
     </div>
   );
 });
+
+Boxes.displayName = "Boxes";

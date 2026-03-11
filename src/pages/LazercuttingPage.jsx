@@ -1,5 +1,5 @@
 import React from "react";
-import Lazercutting from "../components/Lazercutting";
+import Lazercutting from "../components/service/lasercutting/Lazercutting";
 
 const LazercuttingPage = () => (
   <div className="min-h-screen flex flex-col dark:bg-zinc-900 relative overflow-hidden">

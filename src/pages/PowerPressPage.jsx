@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PowerPress from "../components/Powerpress";
+import PowerPress from "../components/service/Powerpress/Powerpress";
 import GridSVG from "../components/ui/GridSVG";
 import { motion, useInView } from 'framer-motion';
 

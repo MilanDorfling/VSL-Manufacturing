@@ -3,8 +3,7 @@ import { motion } from "motion/react";
 import { cn } from "../../lib/utils";
 
 export const BackgroundBeams = React.memo(({ className, animated = true }) => {
-  // Memoize paths to avoid recalculation
-  const paths = React.useMemo(() => [
+  const basePaths = React.useMemo(() => [
       "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
       "M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867",
       "M-366 -205C-366 -205 -298 200 166 327C630 454 698 859 698 859",
@@ -57,9 +56,50 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
       "M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483",
     ], []);
 
-    // Reduce number of animated beams on xl screens for performance
-    const isXL = typeof window !== 'undefined' && window.innerWidth >= 1280;
-    const animatedPaths = isXL ? paths.filter((_, i) => i % 2 === 0) : paths;
+  const paths = React.useMemo(
+    () => [
+      ...basePaths,
+      "M-30 -589C-30 -589 38 -184 502 -57C966 70 1034 475 1034 475",
+      "M-23 -597C-23 -597 45 -192 509 -65C973 62 1041 467 1041 467",
+      "M-16 -605C-16 -605 52 -200 516 -73C980 54 1048 459 1048 459",
+      "M-9 -613C-9 -613 59 -208 523 -81C987 46 1055 451 1055 451",
+      "M-2 -621C-2 -621 66 -216 530 -89C994 38 1062 443 1062 443",
+      "M5 -629C5 -629 73 -224 537 -97C1001 30 1069 435 1069 435",
+      "M12 -637C12 -637 80 -232 544 -105C1008 22 1076 427 1076 427",
+      "M19 -645C19 -645 87 -240 551 -113C1015 14 1083 419 1083 419",
+      "M26 -653C26 -653 94 -248 558 -121C1022 6 1090 411 1090 411",
+      "M33 -661C33 -661 101 -256 565 -129C1029 -2 1097 403 1097 403",
+      "M40 -669C40 -669 108 -264 572 -137C1036 -10 1104 395 1104 395",
+      "M47 -677C47 -677 115 -272 579 -145C1043 -18 1111 387 1111 387",
+      "M54 -685C54 -685 122 -280 586 -153C1050 -26 1118 379 1118 379",
+      "M61 -693C61 -693 129 -288 593 -161C1057 -34 1125 371 1125 371",
+      "M68 -701C68 -701 136 -296 600 -169C1064 -42 1132 363 1132 363",
+      "M75 -709C75 -709 143 -304 607 -177C1071 -50 1138 355 1138 355",
+      "M82 -717C82 -717 150 -312 614 -185C1078 -58 1145 347 1145 347",
+      "M89 -725C89 -725 157 -320 621 -193C1085 -66 1152 339 1152 339",
+    ],
+    [basePaths],
+  );
+
+  const animatedPathCount = basePaths.length;
+
+  // Animate only every 6th beam (~8 total). Static paths still render all 50.
+  // Pre-compute all random values once — never recalculates on re-render.
+  const animatedIndices = React.useMemo(
+    () => paths.map((_, i) => i).filter((i) => i < animatedPathCount && i % 6 === 0),
+    [animatedPathCount, paths],
+  );
+
+  const randomValues = React.useMemo(
+    () =>
+      animatedIndices.map(() => ({
+        y2End: 93 + Math.random() * 8,
+        duration: Math.random() * 10 + 10,
+        delay: Math.random() * 10,
+      })),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
   return (
     <div
       className={cn(
@@ -72,6 +112,7 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
         width="100%"
         height="100%"
         viewBox="0 0 696 316"
+        preserveAspectRatio="xMidYMin meet"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -96,22 +137,22 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
             />
           </React.Fragment>
         ))}
-        {/* Animated beams: moving colored segments for each path. */}
-        {animated && animatedPaths.map((path, index) => (
+        {/* Animated beams: moving colored segments — one per selected index. */}
+        {animated && animatedIndices.map((pathIndex, i) => (
           <motion.path
-            key={`path-` + index}
-            d={path}
-            stroke={`url(#linearGradient-${index})`} // Animated linear gradient for colorful moving effect
-            strokeOpacity="0.8" // Increase for brighter animated beams
-            strokeWidth="0.5" // Increase for thicker animated beams
+            key={`path-` + pathIndex}
+            d={paths[pathIndex]}
+            stroke={`url(#linearGradient-${i})`}
+            strokeOpacity="0.8"
+            strokeWidth="0.5"
           ></motion.path>
         ))}
         <defs>
-          {/* Animated linear gradients for each beam. Change stopColor values for different color effects. */}
-          {animated && animatedPaths.map((path, index) => (
+          {/* Animated linear gradients — only for the reduced beam set. */}
+          {animated && animatedIndices.map((_, i) => (
             <motion.linearGradient
-              id={`linearGradient-${index}`}
-              key={`gradient-${index}`}
+              id={`linearGradient-${i}`}
+              key={`gradient-${i}`}
               initial={{
                 x1: "0%",
                 x2: "0%",
@@ -122,13 +163,13 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
                 x1: ["0%", "100%"],
                 x2: ["0%", "95%"],
                 y1: ["0%", "100%"],
-                y2: ["0%", `${93 + Math.random() * 8}%`],
+                y2: ["0%", `${randomValues[i].y2End}%`],
               }}
               transition={{
-                duration: Math.random() * 10 + 10, // Animation speed for gradient movement
+                duration: randomValues[i].duration,
                 ease: "easeInOut",
                 repeat: Infinity,
-                delay: Math.random() * 10,
+                delay: randomValues[i].delay,
               }}
             >
               <stop stopColor="#18CCFC" stopOpacity="0"></stop> {/* Blue, transparent at start */}

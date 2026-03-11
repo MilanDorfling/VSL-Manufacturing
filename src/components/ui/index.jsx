@@ -89,3 +89,4 @@ export const CardFooter = ({ className, ...props }) => (
 
 // Export Aceternity UI components
 export { Boxes } from './background-boxes';
+export { default as HoverCard } from './HoverCard';
