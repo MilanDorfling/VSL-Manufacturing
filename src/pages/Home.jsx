@@ -22,7 +22,7 @@ import {
   VideoContainer,
 } from '../components/home';
 import LogoLoop from '../components/ui/logoLoop';
-import factoryTourVideo from '../assets/videos/Home-video-trim.mp4';
+// Video file is now served from public directory
 import closingVideo from '../assets/videos/VSL-Journey-Video.mp4';
 
 const HOME_INTRO_SEEN_KEY = 'vsl_home_intro_seen';
@@ -42,40 +42,11 @@ const isReloadNavigation = () => {
   return window.performance.navigation && window.performance.navigation.type === 1;
 };
 
-const Home = () => {
+const Home = ({ introUnlocked, setIntroUnlocked }) => {
   const location = useLocation();
-  const [introUnlocked, setIntroUnlocked] = React.useState(() => {
-    if (typeof window === 'undefined') {
-      return false;
-    }
-
-    if (!hasProcessedIntroNavigation) {
-      hasProcessedIntroNavigation = true;
-
-      if (isReloadNavigation()) {
-        window.sessionStorage.removeItem(HOME_INTRO_SEEN_KEY);
-        return false;
-      }
-    }
-
-    return window.sessionStorage.getItem(HOME_INTRO_SEEN_KEY) === 'true';
-  });
   const firstSectionId = 'home-main-content';
 
-  React.useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    const shouldLockIntro = !introUnlocked && window.innerWidth >= 768;
-
-    if (shouldLockIntro) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [introUnlocked]);
+  // Remove body overflow lock. We'll handle scroll lock via wrapper divs.
 
   React.useEffect(() => {
     if (!introUnlocked || window.innerWidth >= 768) {
@@ -157,95 +128,107 @@ const Home = () => {
             exit={{ opacity: 0, y: -18, filter: 'blur(4px)' }}
             transition={{ duration: 0.45, ease: 'easeOut' }}
           >
-            <HomeIntro onCtaClick={handleIntroCta} />
+            {/* Scrollable HomeIntro wrapper for all desktop sizes */}
+            <div
+              className="w-full min-h-screen overflow-y-auto"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
+              <HomeIntro onCtaClick={handleIntroCta} />
+            </div>
+            {/* Footer is hidden while HomeIntro is visible */}
           </motion.div>
         ) : (
-          <motion.div
-            key="home-content"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-          >
-          <SectionShell id={firstSectionId} className="pb-12 sm:pb-16 md:pb-24">
-            <section id="capability" className="scroll-mt-56">
-              <Capability className="mb-12 md:mb-16 mt-24" />
-            </section>
+          <>
+            <motion.div
+              key="home-content"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
+            >
+              {/* Main content is only rendered when introUnlocked is true */}
+              <SectionShell id={firstSectionId} className="pb-12 sm:pb-16 md:pb-24">
+                <section id="capability" className="scroll-mt-56">
+                  <Capability className="mb-12 md:mb-16 mt-24" />
+                </section>
 
-            <section id="facility-tour" className="scroll-mt-56">
-              <VideoContainer
-                src={factoryTourVideo}
-                title="VSL facility tour"
-                wrapperClassName="w-full flex justify-center mb-14 md:mb-28"
-              />
-            </section>
+                <section id="facility-tour" className="scroll-mt-56">
+                  <VideoContainer
+                    src="/assets/videos/Home-video-trim.mp4"
+                    title="VSL facility tour"
+                    wrapperClassName="w-full flex justify-center mb-14 md:mb-28"
+                  />
+                </section>
 
-            <section id="engineering" className="scroll-mt-56">
-              <EngineeringSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="engineering" className="scroll-mt-56">
+                  <EngineeringSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="journey" className="scroll-mt-56">
-              <JourneySection className="mb-14 md:mb-28" />
-            </section>
+                <section id="journey" className="scroll-mt-56">
+                  <JourneySection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="facilities" className="scroll-mt-56">
-              <FacilitiesSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="facilities" className="scroll-mt-56">
+                  <FacilitiesSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="industries" className="scroll-mt-56">
-              <IndustriesSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="industries" className="scroll-mt-56">
+                  <IndustriesSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="capabilities-grid" className="scroll-mt-56">
-              <CapabilitiesSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="capabilities-grid" className="scroll-mt-56">
+                  <CapabilitiesSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="quality" className="scroll-mt-56">
-              <QualitySection className="mb-14 md:mb-28 pb-16" />
-            </section>
+                <section id="quality" className="scroll-mt-56">
+                  <QualitySection className="mb-14 md:mb-28 pb-16" />
+                </section>
 
-            <section id="partners" className="scroll-mt-56">
-              <PartnersSection className="mb-12 md:mb-16" />
-            </section>
-          </SectionShell>
+                <section id="partners" className="scroll-mt-56">
+                  <PartnersSection className="mb-12 md:mb-16" />
+                </section>
+              </SectionShell>
 
-          <div className="w-full -mt-6 md:-mt-24 mb-12 md:mb-24">
-            <LogoLoop />
-          </div>
+              <div className="w-full -mt-6 md:-mt-24 mb-12 md:mb-24">
+                <LogoLoop />
+              </div>
 
-          <SectionShell className="pb-12 sm:pb-16 md:pb-24">
-            <section id="impact" className="scroll-mt-56">
-              <ImpactSection className="mb-14 md:mb-28" />
-            </section>
+              <SectionShell className="pb-12 sm:pb-16 md:pb-24">
+                <section id="impact" className="scroll-mt-56">
+                  <ImpactSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="milestones" className="scroll-mt-56">
-              <JourneyMilestoneCards className="mb-14 md:mb-28" />
-            </section>
+                <section id="milestones" className="scroll-mt-56">
+                  <JourneyMilestoneCards className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="press-line" className="scroll-mt-56">
-              <PressLineSummarySection className="mb-14 md:mb-28" />
-            </section>
+                <section id="press-line" className="scroll-mt-56">
+                  <PressLineSummarySection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="precision" className="scroll-mt-56">
-              <PrecisionSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="precision" className="scroll-mt-56">
+                  <PrecisionSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="leadership" className="scroll-mt-56">
-              <LeadershipBannerSection className="mb-14 md:mb-28" />
-            </section>
+                <section id="leadership" className="scroll-mt-56">
+                  <LeadershipBannerSection className="mb-14 md:mb-28" />
+                </section>
 
-            <section id="closing" className="scroll-mt-56">
-              <ClosingBannerSection className="mb-14 md:mb-14" />
-            </section>
+                <section id="closing" className="scroll-mt-56">
+                  <ClosingBannerSection className="mb-14 md:mb-14" />
+                </section>
 
-            <section id="closing-video" className="scroll-mt-56">
-              <VideoContainer
-                src={closingVideo}
-                title="VSL closing showcase"
-                wrapperClassName="w-full flex justify-center mb-14 md:mb-14"
-              />
-            </section>
-          </SectionShell>
-          </motion.div>
+                <section id="closing-video" className="scroll-mt-56">
+                  <VideoContainer
+                    src={closingVideo}
+                    title="VSL closing showcase"
+                    wrapperClassName="w-full flex justify-center mb-14 md:mb-14"
+                  />
+                </section>
+              </SectionShell>
+            </motion.div>
+            {/* Render footer here if you have one, only when introUnlocked is true */}
+            {/* Example: {introUnlocked && <Footer />} */}
+          </>
         )}
       </AnimatePresence>
     </div>
