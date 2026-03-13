@@ -25,26 +25,26 @@ export const servicesQuoteContent = {
 export const servicesSplitCards = [
   {
     key: 'powerpress',
-    title: 'Power Press Operations',
+    title: 'Stampings',
     description:
       'High-precision stamping and forming backed by advanced press line capability and experienced operators.',
     metrics: ['Up to 2,000 ton force', 'Komani + Gqeberha capability'],
-    cta: 'Explore Power Press',
+    cta: 'Explore Stamping',
     route: '/powerpress',
     imageSrc: pressImage,
-    imageAlt: 'Power press operations',
+    imageAlt: 'Stamping',
     accent: 'from-cyan-600/30 to-blue-700/40',
   },
   {
     key: 'lasercutting',
-    title: 'Laser Cutting Operations',
+    title: 'Laser Cutting',
     description:
       'Versatile 2D and 3D laser processing with in-house design and programming support from concept to production.',
     metrics: ['TruLaser Cell 5030', 'Prototype to production-ready workflows'],
     cta: 'Explore Laser Cutting',
     route: '/lazercutting',
     imageSrc: laserImage,
-    imageAlt: 'Laser cutting operations',
+    imageAlt: 'Laser cutting',
     accent: 'from-sky-500/30 to-indigo-700/45',
   },
 ];

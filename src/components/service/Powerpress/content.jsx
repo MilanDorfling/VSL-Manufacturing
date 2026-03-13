@@ -1,5 +1,5 @@
 import React from 'react';
-import PressVideo from '../../../assets/videos/VSL Footage - Press Pack1.mp4';
+import PressVideo from '../../../assets/videos/Video Project 1_compressed.mp4';
 import img1 from '../../../assets/pictures/SWD13733.JPG';
 import img2 from '../../../assets/pictures/SWD13765.JPG';
 import img3 from '../../../assets/pictures/SWD13722.JPG';
@@ -89,10 +89,10 @@ export const powerpressImageSections = [
         <h3 className="text-xl font-bold mb-2 text-center">Our Expert Team</h3>
         <div className="flex flex-col items-center">
           <p className="text-center mb-2">
-            Behind every successful press operation is a team of highly skilled professionals. Our VSL Powerpress team brings years of experience, technical expertise, and a passion for precision engineering to every project.
+            Behind every successful press operation is a team of highly skilled professionals. Our VSL team brings years of experience, technical expertise, and a passion for precision engineering to every project.
           </p>
           <ul className="list-disc pl-8 mb-2 text-left w-fit mx-auto">
-            <li>Certified press operators with extensive training</li>
+
             <li>Commitment to safety, quality, and efficiency</li>
             <li>Proven track record in handling complex stamping projects</li>
             <li>Collaborative approach to problem-solving and innovation</li>

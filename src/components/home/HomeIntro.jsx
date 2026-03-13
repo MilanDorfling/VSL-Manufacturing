@@ -47,7 +47,7 @@ const HomeIntro = ({
   };
 
   return (
-    <section className={`relative w-full overflow-hidden ${className}`.trim()}>
+    <section className={`relative w-full min-h-screen overflow-hidden ${className}`.trim()}>
       <img
         src={pressLineImage}
         alt="VSL press line manufacturing facility"

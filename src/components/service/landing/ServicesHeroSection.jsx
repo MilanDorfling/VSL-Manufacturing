@@ -14,7 +14,7 @@ const ServicesHeroSection = ({ content }) => {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-400">
             {content.kicker}
           </p>
-          <h1 className="mt-4 text-5xl sm:text-6xl font-extrabold leading-normal bg-linear-to-t from-neutral-900/95 to-gray-300 bg-clip-text text-transparent drop-shadow-lg dark:from-white/80 dark:to-white/30">
+          <h1 className="mt-4 text-5xl sm:text-6xl font-extrabold leading-normal bg-linear-to-t from-neutral-900/95 to-neutral-400 bg-clip-text text-transparent drop-shadow-lg dark:from-white/80 dark:to-white/30">
             {content.title}
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-neutral-700 dark:text-neutral-200/80 sm:text-base">

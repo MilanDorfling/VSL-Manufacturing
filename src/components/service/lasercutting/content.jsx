@@ -9,7 +9,7 @@ export const laserHero = {
   title: 'Laser Cut Operation',
   machineTitle: 'TruLaser Cell 5030',
   introCopy: (
-    <>
+    <span className="text-neutral-900 dark:text-white font-semibold">
       Our Port Elizabeth facility features the newly commissioned Trumpf TruLaser Cell 5030, a
       state-of-the-art system for both 2D and 3D laser cutting. This machine delivers outstanding
       precision, flexibility, and efficiency for a wide range of applications.
@@ -18,7 +18,7 @@ export const laserHero = {
       <br />
       Our in-house design office provides expert design and programming support, ensuring seamless
       project execution from concept to final cut.
-    </>
+    </span>
   ),
   videoSrc: videoTour,
   videoPoster: laser1,

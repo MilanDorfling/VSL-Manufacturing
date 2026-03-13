@@ -97,13 +97,12 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
         duration: Math.random() * 10 + 10,
         delay: Math.random() * 10,
       })),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
   return (
     <div
       className={cn(
-        "absolute inset-0 flex h-full w-full items-center justify-center mask-no-repeat mask-size-[4px] bg-white dark:bg-transparent",
+        "absolute inset-0 flex h-full w-full items-center justify-center bg-white dark:bg-transparent",
         className
       )}
     >
@@ -193,6 +192,10 @@ export const BackgroundBeams = React.memo(({ className, animated = true }) => {
           </radialGradient>
         </defs>
       </svg>
+      {/* Light mode fade overlay at bottom */}
+      <div className="pointer-events-none absolute inset-0 z-10 block dark:hidden" aria-hidden="true">
+        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-linear-to-b from-transparent to-white" />
+      </div>
     </div>
   );
 });
