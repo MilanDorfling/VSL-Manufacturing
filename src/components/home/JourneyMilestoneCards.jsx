@@ -31,7 +31,7 @@ const defaultMilestones = [
     title: 'Advanced Manufacturing Expansion',
     description: 'Development of the Struandale manufacturing facility in Gqeberha.',
     keyInterests: [
-      'R760 million investment',
+      'R750 million investment',
       '9,800 m² state-of-the-art facility',
       'Advanced automated press line technology',
       'Level 3 BBBEE, 51% black woman ownership',

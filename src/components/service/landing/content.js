@@ -18,7 +18,7 @@ export const servicesHeroContent = {
 
 export const servicesQuoteContent = {
   quote:
-    "You don't start from the top. The best view is actually from the bottom looking up.",
+    "Partnership is the foundation. The future is what we build together.",
   author: 'Vuyo Skweyiya',
 };
 
