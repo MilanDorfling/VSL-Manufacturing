@@ -1,12 +1,12 @@
 import React from 'react';
 import videoTour from '../../../assets/videos/laser_cut.mp4';
 import laser1 from '../../../assets/pictures/LASER1.jpg';
-import laser2 from '../../../assets/pictures/VSL Opening 27.11.2025 007.jpeg';
-import laser3 from '../../../assets/pictures/LASER3.jpg';
-import img3 from '../../../assets/pictures/VSL Opening 27.11.2025 008.jpeg';
+import laser2 from '../../../assets/pictures/Laser2.png';
+import laser3 from '../../../assets/pictures/Laser4.png';
+import img3 from '../../../assets/pictures/Train.jpeg';
 
 export const laserHero = {
-  title: 'Laser Cut Operation',
+  title: 'Laser Cutting Operations',
   machineTitle: 'TruLaser Cell 5030',
   introCopy: (
     <span className="text-neutral-900 dark:text-white font-semibold">
