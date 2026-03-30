@@ -10,23 +10,23 @@ export function AnimatedPin() {
   // Pin data
   const pins = [
     {
-      title: "Coega IDZ, Lwandle street",
-      href: "https://www.google.com/maps/place/Coega+IDZ+Lwandle+street/@-33.5724556,25.4052012,10.25z/data=!4m6!3m5!1s0x1e64d55b83d55b4f:0xc3f9afc64ccdea63!8m2!3d-33.7962085!4d25.6802141!16s%2Fg%2F11b7ljfxmn?hl=en-US&entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D",
-      mapSrc: "https://www.google.com/maps?q=-33.7962085,25.6802141&z=13&output=embed",
-      mapTitle: "Coega IDZ, Lwandle street Map"
-    },
-    {
-      title: "VSL Manufacturing (Head Factory)",
+      title: "VSL Manufacturing (Gqeberha)",
       href: "https://www.google.com/maps/place/VSL+Manufacturing/@-33.9002462,25.5624987,14.46z/data=!4m6!3m5!1s0x1e7ad50035892b83:0xb076f66de4f41abf!8m2!3d-33.8965788!4d25.573197!16s%2Fg%2F11m79bksh_?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D",
       mapSrc: "https://www.google.com/maps?q=-33.8965788,25.573197&z=13&output=embed",
-      mapTitle: "VSL Manufacturing Head Factory Map"
+      mapTitle: "VSL Manufacturing Gqeberha Map"
     },
     {
-      title: "36 Stephenson Rd, Komani",
+      title: "VSL Manufacturing (Komani)",
       href: "https://www.google.com/maps/place/36+Stephenson+Rd,+Komani,+5320,+South+Africa/@-31.9142708,26.9280327,15z/data=!4m6!3m5!1s0x1e6b1b7e2e2e2e2e:0x1234567890abcdef!8m2!3d-31.9142708!4d26.9280327!16s%2Fg%2F11b7ljfxmn?hl=en-US",
       mapSrc: "https://www.google.com/maps?q=-31.9142708,26.9280327&z=13&output=embed",
-      mapTitle: "36 Stephenson Rd, Komani Map"
-    }
+      mapTitle: "VSL Manufacturing Komani Map"
+    },
+    {
+      title: "VSL Laser (Coega)",
+      href: "https://www.google.com/maps/place/Coega+IDZ+Lwandle+street/@-33.5724556,25.4052012,10.25z/data=!4m6!3m5!1s0x1e64d55b83d55b4f:0xc3f9afc64ccdea63!8m2!3d-33.7962085!4d25.6802141!16s%2Fg%2F11b7ljfxmn?hl=en-US&entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D",
+      mapSrc: "https://www.google.com/maps?q=-33.7962085,25.6802141&z=13&output=embed",
+      mapTitle: "VSL Laser Coega Map"
+    },
   ];
 
   // Responsive state
