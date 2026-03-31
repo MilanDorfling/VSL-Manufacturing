@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Contact from '../components/Contact';
 import { AnimatedPin} from '../components/AnimatedPin';
-import { HexagonBackground } from '../components/ui/contactSVG';
+import { DotBackgroundDemo } from '../components/ui/dotSVG';
 import Footer from '../components/Footer';
 
 
@@ -17,9 +17,9 @@ const ContactPage = () => {
 
   return (
     <div className="relative min-h-screen w-full flex flex-col overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      {/* SVG Hexagon background at lowest layer */}
+      {/* SVG Dot background at lowest layer */}
       <div className="absolute inset-0 z-0">
-        <HexagonBackground mouse={mouse} />
+        <DotBackgroundDemo mouse={mouse} />
       </div>
       {/* Contact form above background */}
       <div className="relative z-10 mt-12 px-4">

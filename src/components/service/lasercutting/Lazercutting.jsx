@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import GridSVG from "../../ui/GridSVG";
+import { DotBackgroundDemo } from "../../ui/dotSVG";
 import {
   ServiceShell,
   ServiceSection,
@@ -20,7 +20,7 @@ const fadeInUp = {
 const Lazercutting = () => {
   return (
     <ServiceShell className="relative overflow-hidden">
-      <GridSVG />
+      <DotBackgroundDemo />
       <motion.div
         className="relative z-10"
         initial={{ opacity: 0 }}

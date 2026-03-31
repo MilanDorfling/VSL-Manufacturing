@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PowerPress from "../components/service/Powerpress/Powerpress";
-import GridSVG from "../components/ui/GridSVG";
+import { DotBackgroundDemo } from "../components/ui/dotSVG";
 import { motion, useInView } from 'framer-motion';
 
 
@@ -9,8 +9,8 @@ const PowerPressPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col dark:bg-zinc-900 relative overflow-hidden">
-      {/* GridSVG as fixed background, always behind */}
-      <GridSVG className="fixed inset-0 w-full h-full z-0" />
+      {/* Dot background as fixed background, always behind */}
+      <DotBackgroundDemo className="fixed inset-0 w-full h-full z-0" />
       <motion.div 
         className="relative z-10"
         initial={{ opacity: 0 }}

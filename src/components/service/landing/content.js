@@ -1,4 +1,4 @@
-import heroImage from '../../../assets/pictures/VSL Opening 27.11.2025 469.jpeg';
+import heroImage from '../../../assets/pictures/upcaled img.png';
 import pressImage from '../../../assets/pictures/SWD13733.JPG';
 import laserImage from '../../../assets/pictures/LASER1.jpg';
 
@@ -6,7 +6,7 @@ export const servicesHeroContent = {
   kicker: 'VSL Manufacturing Services',
   title: 'Built For Precision. Tuned For Scale.',
   subtitle:
-    'From high-tonnage power press production to advanced laser operations, our teams deliver industrial capability with disciplined quality and modern engineering support.',
+    'From high-tonnage press production to advanced laser operations, our teams deliver industrial capability backed by disciplined quality and modern engineering expertise.',
   chips: [
     '2,000 Ton Press Capacity',
     '2D and 3D Laser Processing',
