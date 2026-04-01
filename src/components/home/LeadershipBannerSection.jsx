@@ -7,7 +7,7 @@ const defaultLeaders = [
   {
     name: 'Vuyo Skweyiya',
     badge: 'CEO | Co-Founder',
-    bio: 'Vuyo Skweyiya is the Co-Founder and Director of VSL Manufacturing, responsible for the company\'s strategic direction, stakeholder partnerships, and organisational development. Since founding VSL in 2018, she has played a key role in guiding the company\'s growth and expansion into advanced manufacturing operations in Komani and Gqeberha.',
+    bio: 'Vuyo Skweyiya is the Co-Founder and CEO of VSL Manufacturing, responsible for the company\'s strategic direction, stakeholder partnerships, and organisational development. Since founding VSL in 2018, she has played a key role in guiding the company\'s growth and expansion into advanced manufacturing operations in Komani and Gqeberha.',
     imageSrc: heroImages[0],
   },
   {
