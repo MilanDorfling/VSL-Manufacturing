@@ -25,7 +25,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative w-full min-h-64 md:min-h-80 bg-slate-900 text-white dark:bg-zinc-900 dark:text-white overflow-hidden">
+    <footer className="relative w-full min-h-[230px] overflow-hidden bg-slate-950 text-white">
       {/* Gradient border */}
       <div
         className="absolute top-0 left-0 w-full pointer-events-none"
@@ -40,54 +40,59 @@ const Footer = () => {
       {/* SVG background text */}
       <div
         ref={svgRef}
-        className={`absolute left-0 right-0 top-0 w-full h-full flex items-center justify-center pointer-events-none select-none${visible ? ' fade-in' : ''}`}
-        style={{zIndex: 0, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        className={`absolute left-0 right-0 top-0 h-full w-full select-none pointer-events-none${visible ? ' fade-in' : ''}`}
+        style={{ zIndex: 0, overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '10px' }}>
         <div className="w-full max-w-7xl mx-auto flex items-center justify-center h-full">
-          <FooterSVG style={{width: '100%', height: '100%'}} />
+          <FooterSVG style={{ width: '100%', height: '100%', opacity: 0.55 }} />
         </div>
       </div>
-      {/* Footer grid content: two columns (logo/info, content) */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-2 pl-0 pr-4 pt-8 pb-6">
-        {/* Logo/info column - responsive centering for mobile */}
-        <div className="flex flex-col items-center md:items-start md:justify-start md:-ml-4 col-span-1 w-full">
-          {/* Mobile: logo and ISO side-by-side with padding; md+: stacked and left-aligned */}
-          <div className="flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start w-full mb-2 px-4 md:px-0">
-            <div className="flex flex-row items-center gap-2 md:mb-2">
-              <img src={logoSvg} alt="Logo" className="w-12 h-12 md:w-8 md:h-8 p-1 md:p-0" style={{minWidth: 32}} />
-              <span className="font-bold text-lg tracking-wide">Manufacturing</span>
+      {/* Footer content */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-8 pb-6 sm:px-6 md:pt-10 lg:px-8">
+        <div className="rounded-2xl shadow-[0_20px_60px_rgba(2,8,23,0.45)]">
+          <div className="grid grid-cols-1 gap-8 p-6 md:grid-cols-2 md:p-8">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="flex w-full items-center justify-between gap-5 md:w-auto md:justify-start">
+                <div className="flex items-center gap-2">
+                  <img src={logoSvg} alt="VSL logo" className="h-9 w-9" style={{ minWidth: 36 }} />
+                  <span className="text-xl font-semibold tracking-wide">Manufacturing</span>
+                </div>
+                <img src={isoImg} alt="ISO 9001:2015" className="h-auto w-16 rounded-sm" />
+              </div>
             </div>
-            <img src={isoImg} alt="ISO 9001:2015" className="w-24 h-auto md:w-16 rounded shadow p-1 md:p-0 md:mt-2" style={{maxWidth: 96}} />
-          </div>
-        </div>
-        {/* Content columns wrapper - stack and center on mobile */}
-        <div className="flex flex-col md:flex-row flex-wrap gap-y-4 md:gap-x-23 w-full items-center md:items-start justify-center md:justify-start mt-6 md:mt-0">
-          {/* Content columns side-by-side and centered on mobile */}
-          <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 w-full justify-center items-start">
-            {/* Pages, Legal, Integrations columns - horizontal on md+, centered side-by-side on mobile */}
-            <div className="flex flex-row flex-wrap gap-x-6 gap-y-4 w-full justify-center items-start md:justify-start md:items-start">
-              {/* Pages column */}
-              <div className="flex flex-col text-center md:text-left min-w-[100px] justify-start text-xs sm:text-sm md:text-base">
-                <div className="font-bold mb-2">Pages</div>
-                <ul className="space-y-1 text-sm">
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Home</Link></li>
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/services" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Services</Link></li>
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/contact" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Contact</Link></li>
-                </ul>
-              </div>
-              {/* Legal column */}
-              <div className="flex flex-col text-center md:text-left min-w-[100px] justify-start text-xs sm:text-sm md:text-base">
-                <div className="font-bold mb-2">Legal</div>
-                <ul className="space-y-1 text-sm">
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/privacy" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Privacy Policy</Link></li>
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/terms" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Terms of Service</Link></li>
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/about" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">About Us</Link></li>
-                </ul>
-              </div>
-              {/* Integrations column */}
-              <div className="flex flex-col text-center md:text-left min-w-[100px] justify-start text-xs sm:text-sm md:text-base">
-                <div className="font-bold mb-2">Integrations</div>
-                <ul className="space-y-1 text-sm">
-                  <li className="transition-all duration-200 ease-in-out"><Link to="/affiliates" className="transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">Affiliates</Link></li>
+
+            <div className="flex flex-col items-center md:items-end">
+              <div className="w-full max-w-sm">
+                <div className="mb-3 text-center text-sm font-semibold uppercase tracking-[0.16em] text-slate-300 md:text-right">
+                  Pages
+                </div>
+                <ul className="flex flex-row flex-wrap items-center justify-center gap-2 md:justify-end">
+                  <li>
+                    <Link
+                      to="/"
+                      className="group/footlink relative inline-flex items-center rounded-full border border-cyan-300/35 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-slate-100 transition-all duration-200 hover:border-cyan-300 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.28)]"
+                    >
+                      Home
+                      <span className="pointer-events-none absolute inset-x-3 -bottom-px h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent opacity-0 transition-opacity duration-200 group-hover/footlink:opacity-100" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/services"
+                      className="group/footlink relative inline-flex items-center rounded-full border border-cyan-300/35 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-slate-100 transition-all duration-200 hover:border-cyan-300 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.28)]"
+                    >
+                      Services
+                      <span className="pointer-events-none absolute inset-x-3 -bottom-px h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent opacity-0 transition-opacity duration-200 group-hover/footlink:opacity-100" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/contact"
+                      className="group/footlink relative inline-flex items-center rounded-full border border-cyan-300/35 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-slate-100 transition-all duration-200 hover:border-cyan-300 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.28)]"
+                    >
+                      Contact
+                      <span className="pointer-events-none absolute inset-x-3 -bottom-px h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent opacity-0 transition-opacity duration-200 group-hover/footlink:opacity-100" />
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -95,8 +100,8 @@ const Footer = () => {
         </div>
       </div>
       {/* Developers page link at bottom */}
-      <div className="relative z-10 w-full flex justify-center py-4 lg:pt-20">
-        <Link to="/developers" className="text-xs md:text-sm text-gray-500 transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)]">
+      <div className="relative z-10 flex w-full justify-center pb-6 pt-2">
+        <Link to="/developers" className="text-xs text-slate-400 transition-all duration-200 ease-in-out hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,1)] md:text-sm">
           Developers Page
         </Link>
       </div>
