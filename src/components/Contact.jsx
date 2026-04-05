@@ -53,11 +53,11 @@ function Contact() {
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" name="first-name" placeholder="Milan" type="text" required />
+            <Input id="firstname" name="first-name" placeholder="Name" type="text" required />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" name="last-name" placeholder="Dorfling" type="text" required />
+            <Input id="lastname" name="last-name" placeholder="Surename" type="text" required />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">

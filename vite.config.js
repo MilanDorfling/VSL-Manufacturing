@@ -1,27 +1,25 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  base: "/",
+  plugins: [react(), tailwindcss()],
   css: {
-    postcss: './postcss.config.js',
+    postcss: "./postcss.config.js",
   },
   server: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 5173, // or your chosen port
   },
   build: {
     assetsInlineLimit: 0, // Don't inline any assets as base64
-    target: 'es2015', // Better browser compatibility
-    cssTarget: 'chrome61', // CSS compatibility target
+    target: "es2015", // Better browser compatibility
+    cssTarget: "chrome111", // Must be ≥ chrome85 for Tailwind v4 @property support
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split('.').at(1);
+          let extType = assetInfo.name.split(".").at(1);
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(extType)) {
             return `assets/images/[name]-[hash][extname]`;
           }
@@ -33,5 +31,5 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ['**/*.mp4', '**/*.webm', '**/*.mov'],
-})
+  assetsInclude: ["**/*.mp4", "**/*.webm", "**/*.mov"],
+});
